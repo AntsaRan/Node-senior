@@ -1,7 +1,7 @@
 const axios = require('axios');
 const config = require('../utils/config');
-const apiKey = config.apiKey;
-const apiUrl = config.apiUrlSimple;
+const apiKey = process.env.API_KEY;;
+const apiUrl = process.env.API_URL;;
 const paris = config.parisLatLong;
 const Pollution = require('../model/pollution');
 

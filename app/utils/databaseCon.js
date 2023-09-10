@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const config = require('./config');
+const mongoURI = process.env.MONGODB_URI;
 
 const db = config.database;
 
 const connectDb = async () => {
     await mongoose.connect(
-        `mongodb+srv://antsa:IqairNode@cluster0.wb4lahp.mongodb.net/${db}?retryWrites=true&w=majority`
+        mongoURI
     ).then(res => {
         console.log("connected");
         return (true);
@@ -19,4 +20,4 @@ const closeDb = () => {
     });
 }
 
-module.exports =  {connectDb, closeDb} ;
+module.exports = { connectDb, closeDb };

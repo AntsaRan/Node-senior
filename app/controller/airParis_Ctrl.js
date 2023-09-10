@@ -9,11 +9,17 @@ exports.getPollutionParisMin = (req, res) => {
 
     let { minute = '', hour = '', dayOfMonth = '', month = '', dayOfWeek = '' } = req.body;
 
+    minute = minute || '*';
+    hour = hour || '*';
+    dayOfMonth = dayOfMonth || '*';
+    month = month || '*';
+    dayOfWeek = dayOfWeek || '*';
+
     const job = schedule.scheduleJob(`${minute} ${hour} ${dayOfMonth} ${month} ${dayOfWeek} `, () => {
         getpollutionParis(req, res);
     })
     res.status(500).send('Cron Job started');
-1
+    1
 }
 function getpollutionParis(req, res) {
     pollutionService.getPollutionParisAPI(data => {

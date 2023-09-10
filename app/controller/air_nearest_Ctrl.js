@@ -1,10 +1,6 @@
 const Pollution = require('../model/pollution');
 const pollutionService = require('../services/pollution.service');
 const config = require('../utils/config');
-const paris = config.parisLatLong;
-const schedule = require('node-schedule');
-const bodyParser = require('body-parser');
-const io = require('../services/socket');
 
 exports.getPollutionLatLong = (req, res) => {
 

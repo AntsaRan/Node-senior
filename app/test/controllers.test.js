@@ -11,7 +11,7 @@ const Pollution = require('../model/pollution');
 const polController = require('../controller/airParis_Ctrl');
 const mongoose = require('mongoose');
 
-describe('Air nearest controller - getPollutionLatLong ', function () {
+describe('Air nearest controller ', function () {
     before(function (done) {
         // Connect to the database only once before running the tests
         if (mongoose.connection.readyState === 0) {
@@ -48,32 +48,7 @@ describe('Air nearest controller - getPollutionLatLong ', function () {
                 done();
             });
     });
-
-})
-
-describe('Air nearest controller - getPollutionParis ', function () {
-    before(function (done) {
-        // Connect to the database only once before running the tests
-        if (mongoose.connection.readyState === 0) {
-            mongoose
-                .connect(
-                    'mongodb+srv://antsa:IqairNode@cluster0.wb4lahp.mongodb.net/test_db?retryWrites=true&w=majority'
-                )
-                .then(() => {
-                    console.log("Connected to the database");
-                    done();
-                })
-                .catch(err => {
-                    console.error(err);
-                    done(err);
-                });
-        } else {
-            console.log("Database already connected");
-            done();
-        }
-
-    });
-
+    
     it('should add AIQ of Paris in DB', async function (){
         this.timeout(8000);
         const req = {};
@@ -105,4 +80,14 @@ describe('Air nearest controller - getPollutionParis ', function () {
         mockGetData.restore();
     });
 
+    after(function(done) {
+        Pollution.deleteMany({})
+          .then(() => {
+            return mongoose.disconnect();
+          })
+          .then(() => {
+            done();
+          });
+      });
 })
+
