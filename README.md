@@ -1,7 +1,17 @@
 ### Récupérer la qualité de l'air de la ville la plus proche d'un point de latitude Lat et longitude Long:
 - point d'entrée de l'application: index.js
-- installation des dépendances : npm install
-- lancer l'application: npm start / node index.js
+- installation des dépendances :
+```bash
+npm install
+```
+- lancer l'application:
+```bash
+npm start
+```
+ OU
+```bash
+node index.js
+```
   
 #### url de récupération de la qualité de l'air: 
 
@@ -27,8 +37,18 @@ http://localhost:8000/airnearest/highestPollution
 # Docker:
 
 #### Lien docker: 
-
+```bash
 docker pull antsavr/node-senior:pollution
+```
 
-Pour lancer : docker-compose up
+Pour lancer : 
+
+```bash
+docker-compose up
+```
+#### Testing: 
+Pour lancer les tests:
+```bash
+npm test
+```
 
