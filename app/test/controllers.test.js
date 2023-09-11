@@ -2,7 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const sinon = require('sinon');
 const pollutionService = require('../services/pollution.service');
-const app = require('../index');
+const app = require('../../index');
 const lat = 48.73821705900323;
 const long = 2.2947057935823456;
 chai.use(chaiHttp);
@@ -50,7 +50,7 @@ describe('Air nearest controller ', function () {
     });
     
     it('should add AIQ of Paris in DB', async function (){
-        this.timeout(8000);
+        this.timeout(10000);
         const req = {};
         const res = {
             send: sinon.stub(),
@@ -64,9 +64,11 @@ describe('Air nearest controller ', function () {
             maincn: 'p2'
         };
         const mockGetData = sinon.stub(pollutionService, 'getPollutionParisAPI').callsFake(callback => {
-            callback(pollutionTest);
+            // Simulate the asynchronous call by using a setTimeout
+            setTimeout(() => {
+                callback(pollutionTest);
+            }, 2000); // Simulate a 1-second delay
         });
-        
         await polController.getpollutionParis(req, res);
         const savedPollution = await Pollution.findOne({
             ts: '2023-09-09T15:00:00.000Z',
