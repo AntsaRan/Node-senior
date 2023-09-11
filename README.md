@@ -10,7 +10,7 @@ http://localhost:8000/airnearest/nearest/Lat/Long avec Lat et Long les valeurs r
 #### url de récupération de la qualité de l'air à paris , toutes les minutes:
 http://localhost:8000/airnearest/airparis
 
-la requete attend un corps contenant les paramètres du CRON comme suit:
+La requete attend un corps contenant les paramètres du CRON comme suit:
 
 {
     "minute": "",
