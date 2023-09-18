@@ -15,7 +15,7 @@ app.use('/airnearest', air_nearestRoutes);
 app.use('/airparis', air_ParisRoutes);
 
 dbcon.connectDb().then(res => {
-        const server = app.listen(8000);
+        app.listen(8000);
 }).catch(err => {
     console.log(err);
 });
